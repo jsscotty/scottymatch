@@ -1,0 +1,27 @@
+[build]
+  command = "npm run build"
+  publish = "dist"
+
+[build.environment]
+  NODE_VERSION = "22"
+
+[functions]
+  node_bundler = "esbuild"
+
+[[redirects]]
+  from = "/*"
+  to = "/index.html"
+  status = 200
+
+[[headers]]
+  for = "/assets/*"
+  [headers.values]
+    Cache-Control = "public, max-age=31536000, immutable"
+
+# Local: `npx netlify-cli dev` serves the app plus functions on http://127.0.0.1:5173
+# (the port registered as a Spotify redirect URI). Vite itself runs on 5174.
+[dev]
+  framework = "#custom"
+  command = "vite --port 5174 --strictPort"
+  targetPort = 5174
+  port = 5173
