@@ -1,13 +1,13 @@
 # Scotty's MusicMatch
 
-Compare Spotify liked songs with friends. Live at **https://scottymatch.netlify.app**.
+Compare Spotify libraries (Liked Songs plus your own playlists) with friends. Live at **https://scottymatch.netlify.app**.
 
 You connect Spotify and get a link. Anyone you send it to can connect their Spotify and see what you share: songs you both liked, artists you both like, a taste-match score, eras, genres, mainstream vs deep cuts, who found each shared song first, and songs to steal from each other. Shared songs can be saved as a Spotify playlist.
 
 ## How it works
 
 - **Login**: Spotify Authorization Code with PKCE, straight from the browser. No client secret, no server session. (The 2024 version used the implicit grant, which Spotify shut off on 2025-11-27. That's why it stopped working.)
-- **Your link** (`/c/<id>`): your liked songs, saved as gzipped JSON in Netlify Blobs. Works for any number of people. Each person who connects gets their own results page, `/c/<id>/<their-id>`.
+- **Your link** (`/c/<id>`): your Liked Songs and the playlists you own or collaborate on, saved as gzipped JSON in Netlify Blobs. Works for any number of people. Each person who connects gets their own results page, `/c/<id>/<their-id>`.
 - **Results are snapshots** from when each person connected. "Update my songs" on your link page refreshes your side and re-scores every friend. A friend refreshes theirs by opening your link and connecting again.
 - **Your link page** lists everyone who compared with you, ranked by match. Only the device that made the link has the owner key. Opening your own link on another device and connecting with the same Spotify account hands that device the key too.
 - **Uploads are verified.** The server calls Spotify `/me` with the uploader's token, so nobody can post a library under someone else's name.
@@ -16,7 +16,7 @@ You connect Spotify and get a link. Anyone you send it to can connect their Spot
 | Path | What |
 | --- | --- |
 | `src/lib/auth.ts` | PKCE login, token refresh |
-| `src/lib/spotify.ts` | Liked songs (8 parallel pages), artist photos and genres, playlist creation |
+| `src/lib/spotify.ts` | Liked Songs + own/collaborative playlists (8 parallel pages, deduped, earliest add date wins), artist photos and genres, playlist creation |
 | `src/lib/compare.ts` | Matching (track id, then ISRC, then normalized title + lead artist) and all the analysis |
 | `src/lib/connect.ts` | What happens after Spotify sends you back: make a link, join one, refresh, or save a playlist |
 | `server/share.ts` | Share API, platform-neutral (`Request` in, `Response` out) |

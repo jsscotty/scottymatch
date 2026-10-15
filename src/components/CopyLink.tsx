@@ -21,7 +21,7 @@ export default function CopyLink({ url, shareText, label = 'Copy link' }: { url:
 
   const share = async () => {
     try {
-      await navigator.share({ title: 'Compare our liked songs', text: shareText, url });
+      await navigator.share({ title: 'Compare our Spotify songs', text: shareText, url });
     } catch {
       // User closed the share sheet.
     }

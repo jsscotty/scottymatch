@@ -57,15 +57,15 @@ export default async (request: Request, context: Context) => {
     const meta = (await store.get(`shares/${match[1]}/meta.json`, { type: 'json' })) as Meta | null;
     if (!meta) return response;
 
-    let title = `${meta.user.name} wants to compare liked songs with you`;
-    let description = `${first(meta.user.name)} has ${meta.trackCount.toLocaleString('en-US')} liked songs on Spotify. Connect yours to see which ones you both saved.`;
+    let title = `${meta.user.name} wants to compare Spotify songs with you`;
+    let description = `${first(meta.user.name)} has ${meta.trackCount.toLocaleString('en-US')} songs on Spotify. Connect yours to see which ones you both have.`;
     let image = spotifyImage(meta.user.image);
 
     if (match[2]) {
       const join = (await store.get(`shares/${match[1]}/joins/${match[2]}.summary.json`, { type: 'json' })) as JoinSummary | null;
       if (join?.stats) {
         title = `${first(meta.user.name)} & ${first(join.user.name)}: ${join.stats.tasteMatch}% taste match`;
-        description = `${join.stats.sharedTracks.toLocaleString('en-US')} songs in both their Liked Songs.${join.stats.topArtists.length ? ` Both into ${join.stats.topArtists.join(', ')}.` : ''}`;
+        description = `${join.stats.sharedTracks.toLocaleString('en-US')} songs in both their libraries.${join.stats.topArtists.length ? ` Both into ${join.stats.topArtists.join(', ')}.` : ''}`;
         image = null;
       }
     }

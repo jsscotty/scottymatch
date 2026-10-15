@@ -83,10 +83,10 @@ function OwnerView({ id, owned, summary }: { id: string; owned: OwnedShare; summ
           </div>
         </div>
         <p className="mt-4 text-white/70">
-          When they open it and connect their Spotify, you'll both see what you share. Your {plural(summary.trackCount, 'liked song')} are saved with the link.
+          When they open it and connect their Spotify, you'll both see what you share. Your {plural(summary.trackCount, 'song')} are saved with the link.
         </p>
         <div className="mt-6">
-          <CopyLink url={shareUrl(id)} shareText={`Compare our Spotify liked songs. ${summary.user.name} sent you this.`} />
+          <CopyLink url={shareUrl(id)} shareText={`Compare our Spotify songs. ${summary.user.name} sent you this.`} />
         </div>
         <p className="mt-4 text-sm text-white/45">Your friend's account has to be on this app's Spotify approved list. If they get blocked, they should ask {ADMIN_NAME}.</p>
       </Panel>
@@ -114,7 +114,7 @@ function OwnerView({ id, owned, summary }: { id: string; owned: OwnedShare; summ
                   <span className="min-w-0 flex-1">
                     <span className="block truncate font-medium">{join.user.name}</span>
                     <span className="block text-sm leading-snug text-white/50">
-                      {join.stats ? `${plural(join.stats.sharedTracks, 'shared song')} · ${plural(join.stats.sharedArtists, 'artist')}` : plural(join.trackCount, 'liked song')}
+                      {join.stats ? `${plural(join.stats.sharedTracks, 'shared song')} · ${plural(join.stats.sharedArtists, 'artist')}` : plural(join.trackCount, 'song')}
                     </span>
                     {join.stats?.topArtists.length ? <span className="mt-0.5 line-clamp-1 text-xs text-white/40">{join.stats.topArtists.join(', ')}</span> : <span className="block text-xs text-white/40">{formatDate(join.createdAt)}</span>}
                   </span>
@@ -155,7 +155,7 @@ function OwnerView({ id, owned, summary }: { id: string; owned: OwnedShare; summ
         <div className="flex items-start gap-4">
           <History className="mt-1 h-5 w-5 shrink-0 text-mint" />
           <div>
-            <h2 className="font-display text-lg font-semibold">Liked new songs?</h2>
+            <h2 className="font-display text-lg font-semibold">Added new songs?</h2>
             <p className="mt-1 text-white/60">
               Results are a snapshot from when each of you connected. Your songs are from {formatDate(summary.updatedAt ?? summary.createdAt)}. Update them and every friend's results update too. Friends can open your link again to update theirs.
             </p>
@@ -191,9 +191,9 @@ function VisitorView({ id, summary }: { id: string; summary: ShareSummary }) {
   return (
     <Panel className="fade-up mx-auto mt-4 max-w-lg text-center">
       <Avatar src={summary.user.image} name={summary.user.name} size={88} ring="ring-4 ring-mint/70" />
-      <h1 className="mt-5 font-display text-3xl font-bold leading-tight">{summary.user.name} wants to compare liked songs with you</h1>
+      <h1 className="mt-5 font-display text-3xl font-bold leading-tight">{summary.user.name} wants to compare Spotify songs with you</h1>
       <p className="mt-3 text-white/65">
-        {first} has {plural(summary.trackCount, 'liked song')}. Connect your Spotify to see which ones you both saved.
+        {first} has {plural(summary.trackCount, 'song')} in Liked Songs and playlists. Connect your Spotify to see which ones you both have.
       </p>
       {summary.topArtists && summary.topArtists.length > 0 && (
         <div className="mt-6">
@@ -221,7 +221,7 @@ function VisitorView({ id, summary }: { id: string; summary: ShareSummary }) {
         Connect Spotify and compare
       </button>
       <p className="mt-5 text-sm text-white/45">
-        Your liked songs list gets saved with this link so you and {first} can both see the results. Spotify only lets approved accounts in right now. If yours gets blocked, ask {ADMIN_NAME} to add you.
+        Your song list gets saved with this link so you and {first} can both see the results. Spotify only lets approved accounts in right now. If yours gets blocked, ask {ADMIN_NAME} to add you.
       </p>
     </Panel>
   );

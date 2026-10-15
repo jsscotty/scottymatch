@@ -44,7 +44,7 @@ export default function Connecting() {
   let detail: string | null = null;
   let progress: number | null = null;
   if (state.phase === 'library') {
-    title = 'Reading your liked songs';
+    title = 'Reading your songs and playlists';
     progress = state.total ? (state.loaded / state.total) * 100 : 2;
     detail = state.total ? `${formatCount(state.loaded)} of ${formatCount(state.total)} songs` : 'Starting…';
   } else if (state.phase === 'playlist') {

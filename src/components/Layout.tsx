@@ -24,7 +24,7 @@ export default function Layout({ children }: { children: ReactNode }) {
       </header>
       <main className="relative mx-auto max-w-5xl px-4 pb-20 md:px-6">{children}</main>
       <footer className="relative mx-auto max-w-5xl px-4 pb-10 text-xs leading-relaxed text-white/35 md:px-6">
-        Uses the Spotify Web API. Not made or endorsed by Spotify. We keep the liked-songs lists behind a link until its owner deletes it.
+        Uses the Spotify Web API. Not made or endorsed by Spotify. We keep the song lists behind a link until its owner deletes it.
       </footer>
     </div>
   );

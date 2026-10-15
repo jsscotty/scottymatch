@@ -191,7 +191,7 @@ export default function ResultsPage({ id, joinId }: { id: string; joinId: string
             </h1>
             <p className="mt-2 text-lg text-white/75">{verdict(comparison.tasteMatch)}</p>
             <p className="mt-1 text-sm text-white/45">
-              {plural(a.tracks.length, 'liked song')} vs {plural(b.tracks.length, 'liked song')}
+              {plural(a.tracks.length, 'song')} vs {plural(b.tracks.length, 'song')}
             </p>
           </div>
           <MatchRing value={comparison.tasteMatch} />

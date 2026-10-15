@@ -103,7 +103,7 @@ async function makePlaylist(shareId: string, joinId: string) {
   const first = (name: string) => name.split(' ')[0] || name;
   const url = await createPlaylist(
     `${first(owner.user.name)} & ${first(friend.user.name)}: both liked`,
-    `${sharedTracks.length} songs that are in both our Liked Songs. Made with Scotty's MusicMatch.`,
+    `${sharedTracks.length} songs we both have in our Liked Songs or playlists. Made with Scotty's MusicMatch.`,
     sharedTracks.map((pair) => pair.a.id),
   );
   clearToken();

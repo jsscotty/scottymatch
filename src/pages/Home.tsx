@@ -22,9 +22,9 @@ function VennArt() {
 }
 
 const steps = [
-  { icon: Heart, title: 'Connect Spotify', body: 'We read your liked songs. It takes a few seconds, longer for big libraries.' },
+  { icon: Heart, title: 'Connect Spotify', body: 'We read your Liked Songs and the playlists you made. Takes a few seconds, longer for big libraries.' },
   { icon: Link2, title: 'Send your link', body: 'Text it, DM it, drop it in a group chat. Anyone you send it to can compare with you.' },
-  { icon: Users, title: 'See what you share', body: 'Songs you both liked, artists you both love, and songs to steal from each other.' },
+  { icon: Users, title: 'See what you share', body: 'Songs you both have, artists you both love, and songs to steal from each other.' },
 ];
 
 export default function Home() {
@@ -40,12 +40,12 @@ export default function Home() {
     <div className="fade-up">
       <section className="grid items-center gap-10 pt-6 md:grid-cols-[1.15fr_1fr] md:pt-16">
         <div>
-          <p className="eyebrow">Spotify liked songs, side by side</p>
+          <p className="eyebrow">Spotify libraries, side by side</p>
           <h1 className="mt-4 font-display text-[2.6rem] font-bold leading-[1.02] tracking-tight md:text-6xl">
-            Find the songs you both saved.
+            Find the songs you both love.
           </h1>
           <p className="mt-5 max-w-xl text-lg text-white/70">
-            Connect your Spotify and you get a link. Send it to a friend. Once they connect, you both see every liked song and artist you have in common.
+            Connect your Spotify and you get a link. Send it to a friend. Once they connect, you both see every song and artist you have in common.
           </p>
           <div className="mt-8 flex flex-col items-start gap-3">
             <button type="button" onClick={connect} disabled={starting} className="btn-primary px-8 py-4 text-base">
